@@ -15,7 +15,7 @@ except:
     sys.exit(1)
 
 
-class pyWine:
+class LexicGUI:
     """This is the PyWine application"""
 
     def __init__(self):
@@ -25,15 +25,15 @@ class pyWine:
 
         # Create our dictionay and connect it
         dic = {"on_mainWindow_destroy": gtk.main_quit
-            , "on_AddWine": self.OnAddWine}
+            , "testClick": self.TestFunction}
         self.wTree.signal_autoconnect(dic)
 
-    def OnAddWine(self, widget):
+    def TestFunction(self, widget):
         """Called when the use wants to add a wine"""
 
-        print "OnAddWine"
+        print "Test Function Was Run"
 
 
 if __name__ == "__main__":
-    wine = pyWine()
+    test = LexicGUI()
     gtk.main()
