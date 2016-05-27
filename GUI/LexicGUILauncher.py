@@ -1,22 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import pygtk
-pygtk.require('2.0')
-import gtk
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk
 
-class Base:
-    def destroy(self, widget, data=None):
-        gtk.main_quit()
+win = Gtk.Window()
 
-    def __init__(self):
-        self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        self.window.show()
-        self.window.connect("destroy", self.destroy)
+win.connect("delete-event", Gtk.main_quit)
 
-    def main(self):
-        gtk.main()
+win.show_all()
 
-if __name__ == "__main__":
-    base = Base()
-    base.main()
-
+Gtk.main()
