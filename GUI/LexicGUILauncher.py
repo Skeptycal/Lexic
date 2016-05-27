@@ -41,22 +41,23 @@ class myWindow (Gtk.Window):
         self.prediction9 = Gtk.Button(label = "Prediction #9")
         self.box.pack_start(self.prediction9, True, True, 0)
 
-def test(widget):
-    print "lel"
+def on_prediction_click(widget, sn):
+    print "Suggestion #" + sn + " was pressed."
+    #Return userchoice to script that emulates keypresses.
 
 win = myWindow()
 
 win.connect("delete-event", Gtk.main_quit)
 
-win.prediction1.connect("clicked", test)
-win.prediction2.connect("clicked", test)
-win.prediction3.connect("clicked", test)
-win.prediction4.connect("clicked", test)
-win.prediction5.connect("clicked", test)
-win.prediction6.connect("clicked", test)
-win.prediction7.connect("clicked", test)
-win.prediction8.connect("clicked", test)
-win.prediction9.connect("clicked", test)
+win.prediction1.connect("clicked", on_prediction_click, "1")
+win.prediction2.connect("clicked", on_prediction_click, "2")
+win.prediction3.connect("clicked", on_prediction_click, "3")
+win.prediction4.connect("clicked", on_prediction_click, "4")
+win.prediction5.connect("clicked", on_prediction_click, "5")
+win.prediction6.connect("clicked", on_prediction_click, "6")
+win.prediction7.connect("clicked", on_prediction_click, "7")
+win.prediction8.connect("clicked", on_prediction_click, "8")
+win.prediction9.connect("clicked", on_prediction_click, "9")
 
 
 
