@@ -5,11 +5,12 @@ import sys
 from time import sleep, time
 import ctypes as ct
 from ctypes.util import find_library
-from pykeylogger import keylogger
-import time
 
 con = None
 cursor = None
+
+if len(sys.argv) < 2:
+    raise Exception("Need first argument for database")
 
 #Sorry, but I depend on X11 at the moment. 
 assert("linux" in sys.platform)
@@ -43,4 +44,4 @@ def cliLoop():
             print(row[1])
             a+=1
 
-#cliLoop()
+cliLoop()
