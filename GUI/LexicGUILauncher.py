@@ -40,10 +40,14 @@ def on_prediction_click(widget, sn):
     print "Suggestion #" + str(sn) + " was pressed."
     #Return userchoice to script that emulates keypresses.
 
+#Connect the closing of the main window, to ending the script with Gtk.main_quit
 win.connect("delete-event", Gtk.main_quit)
 
+#Run the createButtons function
 createButtons(buttonAmount)
 
+#Show the window and it's children(buttons)
 win.show_all()
 
+#Executes the main function of Gtk
 Gtk.main()
