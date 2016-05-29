@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 
 #Import dependencies
+import sys
 import gi
 gi.require_version("Gtk","3.0")
 from gi.repository import Gtk
+#sys.path.insert(0, "../Predictor/")
+#import Predictor
 
 #Customizable variables |---
 
@@ -28,7 +31,7 @@ win = mainWindow()
 
 #Function for creating the buttons
 def createButtons(amount):
-    print "[GUI] Creating " + str(amount) + " buttons"
+    print ("[GUI] Creating " + str(amount) + " buttons")
     i = 1
     while i <= amount:
         #Add the buttons to the window class
@@ -39,21 +42,27 @@ def createButtons(amount):
         getattr(win, "prediction" + str(i)).connect("clicked", on_prediction_click, i)
         i += 1
 
+#Function to update suggestions
 def updateSuggestions(suggestionList, bAmount):
-    print "[GUI] Updating suggestions"
+    print ("[GUI] Updating suggestions")
+    #Try to change the button labels (Will probably fail if the inputtet suggestions are not a list)
     try:
         i = 0
+        #Run the loop for the amount of buttons
         while i <= bAmount:
+            #If only attempt to change the labels,
             if i < len(suggestionList):
+                #Get the button using getattr(), then set the label to the respective item of the list.
                 getattr(win, "prediction" + str(i + 1)).set_label(suggestionList[i])
                 i += 1
             else:
+                #Return if the length of the list has been reached
                 return
     except:
-        print "[GUI] Error during suggestion update (might be due to input not being a list)"
+        print ("[GUI] Error during suggestion update (might be due to input not being a list)")
 
 def on_prediction_click(widget, sn):
-    print "[GUI] Suggestion #" + str(sn) + " was pressed."
+    print ("[GUI] Suggestion #" + str(sn) + " was pressed.")
     #Return userchoice to script that emulates keypresses.
 
 
