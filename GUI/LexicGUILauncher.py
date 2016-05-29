@@ -41,7 +41,6 @@ def createButtons(amount):
 
 def updateSuggestions(suggestionList, bAmount):
     print "[GUI] Updating suggestions"
-
     try:
         i = 0
         while i <= bAmount:
@@ -56,6 +55,7 @@ def updateSuggestions(suggestionList, bAmount):
 def on_prediction_click(widget, sn):
     print "[GUI] Suggestion #" + str(sn) + " was pressed."
     #Return userchoice to script that emulates keypresses.
+
 
 #Connect the closing of the main window, to ending the script with Gtk.main_quit
 win.connect("delete-event", Gtk.main_quit)
