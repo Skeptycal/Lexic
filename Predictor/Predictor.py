@@ -34,14 +34,14 @@ def cliLoop():
     while True:
         textInput = input("Enter previous word: ")
         words = getWords(textInput)
-        a = 0
-        while a < 10:
+        for i in range(10):
             row = words.fetchone()
     
             if row == None:
                 break
             
             print(row[1])
-            a+=1
 
-cliLoop()
+if __name__ == '__main__':
+
+    cliLoop()

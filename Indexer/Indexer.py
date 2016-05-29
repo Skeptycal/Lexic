@@ -63,13 +63,15 @@ def parse(file_url):
                 addToDatabase(prevWord, word)
                 prevWord = word
 
-# Try and catch any wrong input in arguments
-for argument in sys.argv[1:]:
-    if not os.path.isfile(argument):
-        raise Exception("File " + argument + " does not exist")
-    if mimetypes.guess_type(argument)[0] != 'text/plain':
-        raise Exception("File " + argument + " is not a plain text file")
+if __name__ == '__main__':
+
+    # Try and catch any wrong input in arguments
+    for argument in sys.argv[1:]:
+        if not os.path.isfile(argument):
+            raise Exception("File " + argument + " does not exist")
+        if mimetypes.guess_type(argument)[0] != 'text/plain':
+            raise Exception("File " + argument + " is not a plain text file")
 
 
-for argument in sys.argv[1:]:
-    parse(argument)
+    for argument in sys.argv[1:]:
+        parse(argument)
