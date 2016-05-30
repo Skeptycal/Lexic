@@ -26,7 +26,7 @@ def getWords(PrevWord):
     cursor.execute("SELECT * FROM Completions WHERE PrevWord=? ORDER BY Weight DESC", (PrevWord,))
     return cursor
 
-initiateDB(sys.argv[1])
+
 
 def cliLoop():
     #Hold on to your butts
@@ -42,7 +42,8 @@ def cliLoop():
             print(row[1])
 
 if __name__ == '__main__':
-
+    
+    initiateDB(sys.argv[1])
     if len(sys.argv) < 2:
         raise Exception("Need first argument for database")
     initiateDB(sys.argv[1])
