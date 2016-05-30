@@ -20,6 +20,7 @@ class mainWindow (Gtk.Window):
     #Initiating function for the window
     def __init__(self):
         Gtk.Window.__init__(self, title="LexicGUITest")
+        self.set_keep_above(True)
 
         #Create vertical box that the buttons will be placed in
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
