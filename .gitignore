@@ -63,3 +63,6 @@ target/
 
 #Sqlite databases. Used for the Markov Database
 *.db
+
+#Skilles IDE.
+.idea/
