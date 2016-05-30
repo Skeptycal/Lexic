@@ -8,27 +8,7 @@ from gi.repository import Gtk
 #sys.path.insert(0, "../Predictor/")
 #import Predictor
 
-#Customizable variables |---
-
-#The amount of buttons that will be created:
-buttonAmount = 9
-
-#---|
-
-#Create class for the main window
-class mainWindow (Gtk.Window):
-    #Initiating function for the window
-    def __init__(self):
-        Gtk.Window.__init__(self, title="LexicGUITest")
-        self.set_keep_above(True)
-
-        #Create vertical box that the buttons will be placed in
-        self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-
-        #Add the box to the window
-        self.add(self.box)
-
-win = mainWindow()
+#Functions |---
 
 #Function for creating the buttons
 def createButtons(amount):
@@ -66,6 +46,38 @@ def on_prediction_click(widget, sn):
     print ("[GUI] Suggestion #" + str(sn) + " was pressed.")
     #Return userchoice to script that emulates keypresses.
 
+#---|
+
+#Customizable variables |---
+
+#The amount of buttons that will be created:
+buttonAmount = 9
+
+#---|
+
+#Create class for the main window
+class mainWindow (Gtk.Window):
+    #Initiating function for the window
+    def __init__(self):
+        Gtk.Window.__init__(self, title="LexicGUITest")
+        self.set_keep_above(True)
+        self.set_decorated(False)
+        self.menu = Gtk.Menu()
+        self.menu_items = Gtk.MenuItem("lel")
+        self.menu.append(self.menu_items)
+        self.menu_items.show()
+        self.menu_bar = Gtk.MenuBar()
+        self.root_menu = Gtk.MenuItem("Root Menu")
+        self.root_menu.set_submenu(self.menu)
+
+        #Create vertical box that the buttons will be placed in
+        self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+
+
+        #Add the box to the window
+        self.add(self.box)
+
+win = mainWindow()
 
 #Connect the closing of the main window, to ending the script with Gtk.main_quit
 win.connect("delete-event", Gtk.main_quit)
