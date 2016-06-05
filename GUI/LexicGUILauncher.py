@@ -69,6 +69,7 @@ class mainWindow (Gtk.Window):
         self.menu_bar = Gtk.MenuBar()
         self.root_menu = Gtk.MenuItem("Root Menu")
         self.root_menu.set_submenu(self.menu)
+        #MasterTest
 
         #Create vertical box that the buttons will be placed in
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
