@@ -13,29 +13,25 @@ from gi.repository import Gtk
 #Function for creating the buttons
 def createButtons(amount):
     print ("[GUI] Creating " + str(amount) + " buttons")
-    i = 1
-    while i <= amount:
+    for i in range(1, amount + 1):
         #Add the buttons to the window class
         setattr(win, "prediction" + str(i), Gtk.Button(label = "Prediction #" + str(i)))
         #Add the buttons to the box
         win.box.pack_start(getattr(win, "prediction" + str(i)), True, True, 0)
         #Connect the buttons clicked event to the on_prediction_click function
         getattr(win, "prediction" + str(i)).connect("clicked", on_prediction_click, i)
-        i += 1
 
 #Function to update suggestions
-def updateSuggestions(suggestionList, bAmount):
+def updateSuggestions(suggestionList, amount):
     print ("[GUI] Updating suggestions")
     #Try to change the button labels (Will probably fail if the inputtet suggestions are not a list)
     try:
-        i = 0
         #Run the loop for the amount of buttons
-        while i <= bAmount:
+        for i in range(0,amount + 1):
             #If only attempt to change the labels,
             if i < len(suggestionList):
                 #Get the button using getattr(), then set the label to the respective item of the list.
                 getattr(win, "prediction" + str(i + 1)).set_label(suggestionList[i])
-                i += 1
             else:
                 #Return if the length of the list has been reached
                 return
