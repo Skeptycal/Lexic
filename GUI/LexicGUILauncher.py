@@ -61,6 +61,9 @@ def on_prediction_click(widget, sn):
     print ("[GUI] Suggestion #" + str(sn) + " was pressed.")
     #Return userchoice to script that emulates keypresses.
 
+def test():
+    print("lel")
+
 #---|
 
 #Customizable variables |---
@@ -78,12 +81,28 @@ class mainWindow (Gtk.Window):
         self.set_keep_above(True)
         self.set_decorated(False)
 
+        self.mainBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=20)
+        self.add(self.mainBox)
+
+        self.topBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.mainBox.pack_start(self.topBox, True, True, 0)
+
         #Create vertical box that the buttons will be placed in
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
 
-
         #Add the box to the window
-        self.add(self.box)
+        #self.add(self.box)
+        self.mainBox.pack_start(self.box, True, True, 0)
+
+        #Add textField, and add it to the box
+        self.test = Gtk.Entry()
+        self.topBox.pack_start(self.test, True, True, 0)
+        self.test.set_text("lel")
+
+        #Add search button
+        self.search = Gtk.Button(label = "test")
+        self.topBox.pack_start(self.search, True, True, 0)
+
 
 win = mainWindow()
 
