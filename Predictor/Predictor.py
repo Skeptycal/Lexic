@@ -6,10 +6,12 @@ from time import sleep, time
 import ctypes as ct
 from ctypes.util import find_library
 
+print("[Predictor] Starting predictor script")
+
 con = None
 cursor = None
 
-
+DBPath = None
 
 #Crash if not on linux
 assert("linux" in sys.platform)
@@ -17,13 +19,15 @@ assert("linux" in sys.platform)
 def initiateDB(fileName):
     #Try and connect to SQL, crash if that doesn't work
     try:
+        global DBPath
+        DBPath = fileName
         con = sqlite3.connect(fileName)
     except sqlite3.Error:
         raise Exception("Could not connect to database")
 
 #Creates a connection object, with our first argument which is the filename of the DB file. Then we create a cursor object, which is for navigating the DB, and use it to get the list of words corresponding to PrevWord
 def getWords(PrevWord):
-    con = sqlite3.connect(sys.argv[1])
+    con = sqlite3.connect(DBPath)
     cursor = con.cursor()
     cursor.execute("SELECT * FROM Completions WHERE PrevWord=? ORDER BY Weight DESC", (PrevWord,))
     return cursor
@@ -46,9 +50,9 @@ def cliLoop():
 
 #If this is not a library, but instead just executed on it's own, we'll do these things.
 if __name__ == '__main__':
-
-    initiateDB(sys.argv[1])
+    DBPath = sys.argv[1]
+    initiateDB(DBPath)
     if len(sys.argv) < 2:
         raise Exception("Need first argument for database")
-    initiateDB(sys.argv[1])
+    initiateDB(DBPath)
     cliLoop()

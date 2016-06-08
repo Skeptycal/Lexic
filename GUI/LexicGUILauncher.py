@@ -5,8 +5,11 @@ import sys
 import gi
 gi.require_version("Gtk","3.0")
 from gi.repository import Gtk
-#sys.path.insert(0, "../Predictor/")
-#import Predictor
+#Import the predictor
+#Next line changes the python import focus
+sys.path.insert(0, "../Predictor/")
+import Predictor
+
 
 #Functions |---
 
@@ -20,6 +23,18 @@ def createButtons(amount):
         win.box.pack_start(getattr(win, "prediction" + str(i)), True, True, 0)
         #Connect the buttons clicked event to the on_prediction_click function
         getattr(win, "prediction" + str(i)).connect("clicked", on_prediction_click, i)
+
+def convertSuggestion(suggestion):
+    sList = []
+    for i in range(10):
+        row = suggestion.fetchone()
+
+        if row == None:
+            break
+
+        sList.append(str(row[1]))
+
+    return sList
 
 #Function to update suggestions
 def updateSuggestions(suggestionList, amount):
@@ -76,6 +91,10 @@ createButtons(buttonAmount)
 
 #Show the window and it's children(buttons)
 win.show_all()
+
+#Start the predictor
+Predictor.initiateDB("/home/benjadahl/Documents/MarkovComplete.db")
+updateSuggestions(convertSuggestion(Predictor.getWords("is")), buttonAmount)
 
 #Executes the main function of Gtk
 Gtk.main()
