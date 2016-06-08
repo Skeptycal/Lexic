@@ -77,7 +77,5 @@ createButtons(buttonAmount)
 #Show the window and it's children(buttons)
 win.show_all()
 
-updateSuggestions(["example1","example2","example3"], buttonAmount)
-
 #Executes the main function of Gtk
 Gtk.main()
