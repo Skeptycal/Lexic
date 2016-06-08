@@ -53,6 +53,10 @@ def updateSuggestions(suggestionList, amount):
     except:
         print ("[GUI] Error during suggestion update (might be due to input not being a list)")
 
+def getConvertUp(word):
+    #This function takes a string, looks it up in the database, converts the output to a list, and then updates the suggestions
+    return updateSuggestions(convertSuggestion(Predictor.getWords(word)), buttonAmount)
+
 def on_prediction_click(widget, sn):
     print ("[GUI] Suggestion #" + str(sn) + " was pressed.")
     #Return userchoice to script that emulates keypresses.
@@ -94,7 +98,8 @@ win.show_all()
 
 #Start the predictor
 Predictor.initiateDB("/home/benjadahl/Documents/MarkovComplete.db")
-updateSuggestions(convertSuggestion(Predictor.getWords("is")), buttonAmount)
+#updateSuggestions(convertSuggestion(Predictor.getWords("is")), buttonAmount)
+getConvertUp("the")
 
 #Executes the main function of Gtk
 Gtk.main()
