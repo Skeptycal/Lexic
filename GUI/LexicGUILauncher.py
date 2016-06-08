@@ -103,6 +103,8 @@ class mainWindow (Gtk.Window):
         self.search = Gtk.Button(label = "test")
         self.topBox.pack_start(self.search, True, True, 0)
 
+        self.label = Gtk.Label(text="lel")
+
 
 win = mainWindow()
 
