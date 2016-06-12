@@ -125,7 +125,5 @@ win.show_all()
 #Start the predictor
 Predictor.initiateDB("/home/benjadahl/Documents/MarkovComplete.db")
 
-on_search_click(1, "lelelel")
-
 #Executes the main function of Gtk
 Gtk.main()
