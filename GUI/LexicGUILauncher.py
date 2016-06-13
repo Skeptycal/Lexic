@@ -61,6 +61,9 @@ def on_prediction_click(widget, sn):
     print ("[GUI] Suggestion #" + str(sn) + " was pressed.")
     #Return userchoice to script that emulates keypresses.
 
+def on_search_click(widget, searchTerm):
+    getConvertUp(win.searchField.get_text())
+
 #---|
 
 #Customizable variables |---
@@ -78,12 +81,35 @@ class mainWindow (Gtk.Window):
         self.set_keep_above(True)
         self.set_decorated(False)
 
+        #Creates the top level parent box contain 2 children boxes
+        self.mainBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=20)
+        self.add(self.mainBox)
+
+        #Creates the box for the top of the GUI
+        self.topBox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.mainBox.pack_start(self.topBox, True, True, 0)
+
         #Create vertical box that the buttons will be placed in
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
 
-
         #Add the box to the window
-        self.add(self.box)
+        #self.add(self.box)
+        self.mainBox.pack_start(self.box, True, True, 0)
+
+        #Add textField, and add it to the box
+        self.searchField = Gtk.Entry()
+        self.topBox.pack_start(self.searchField, True, True, 0)
+        self.searchField.set_text("is")
+
+        #Add search button
+        self.search = Gtk.Button(label = "Search")
+        self.topBox.pack_start(self.search, True, True, 0)
+        self.search.connect("clicked", on_search_click, self.searchField.get_text())
+
+        #Add the Suggestions label
+        self.label = Gtk.Label(label="Suggestions:")
+        self.box.pack_start(self.label, True, True, 0)
+
 
 win = mainWindow()
 
@@ -98,8 +124,6 @@ win.show_all()
 
 #Start the predictor
 Predictor.initiateDB("/home/benjadahl/Documents/MarkovComplete.db")
-#updateSuggestions(convertSuggestion(Predictor.getWords("is")), buttonAmount)
-getConvertUp("the")
 
 #Executes the main function of Gtk
 Gtk.main()
