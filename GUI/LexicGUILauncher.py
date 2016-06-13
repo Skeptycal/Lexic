@@ -123,7 +123,7 @@ createButtons(buttonAmount)
 win.show_all()
 
 #Start the predictor
-Predictor.initiateDB("/home/benjadahl/Documents/MarkovComplete.db")
+Predictor.initiateDB("MarkovComplete.db")
 
 #Executes the main function of Gtk
 Gtk.main()
