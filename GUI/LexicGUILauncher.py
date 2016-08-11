@@ -62,7 +62,13 @@ def on_prediction_click(widget, sn):
     #Return userchoice to script that emulates keypresses.
 
 def on_search_click(widget, searchTerm):
+    #Updates the userchoices arcoding to the searchterm in the text input field
     getConvertUp(win.searchField.get_text())
+
+def enter_check(widget, key):
+    if key.keyval == 65293:
+        #Updates the userchoices arcoding to the searchterm in the text input field
+        getConvertUp(win.searchField.get_text())
 
 #---|
 
@@ -98,6 +104,7 @@ class mainWindow (Gtk.Window):
 
         #Add textField, and add it to the box
         self.searchField = Gtk.Entry()
+        self.searchField.connect("key-release-event", enter_check)
         self.topBox.pack_start(self.searchField, True, True, 0)
         self.searchField.set_text("is")
 
