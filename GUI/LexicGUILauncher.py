@@ -62,7 +62,6 @@ def on_prediction_click(widget, sn):
     #Return userchoice to script that emulates keypresses.
 
 def on_search_click(widget, searchTerm):
-<<<<<<< HEAD
     #Updates the userchoices arcoding to the searchterm in the text input field
     getConvertUp(win.searchField.get_text())
 
@@ -71,10 +70,6 @@ def enter_check(widget, key):
         #Updates the userchoices arcoding to the searchterm in the text input field
         getConvertUp(win.searchField.get_text())
 
-=======
-    getConvertUp(win.searchField.get_text())
-
->>>>>>> upstream/master
 #---|
 
 #Customizable variables |---
