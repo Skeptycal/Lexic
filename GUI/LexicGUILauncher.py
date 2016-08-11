@@ -62,6 +62,7 @@ def on_prediction_click(widget, sn):
     #Return userchoice to script that emulates keypresses.
 
 def on_search_click(widget, searchTerm):
+<<<<<<< HEAD
     #Updates the userchoices arcoding to the searchterm in the text input field
     getConvertUp(win.searchField.get_text())
 
@@ -70,6 +71,10 @@ def enter_check(widget, key):
         #Updates the userchoices arcoding to the searchterm in the text input field
         getConvertUp(win.searchField.get_text())
 
+=======
+    getConvertUp(win.searchField.get_text())
+
+>>>>>>> upstream/master
 #---|
 
 #Customizable variables |---
@@ -104,7 +109,10 @@ class mainWindow (Gtk.Window):
 
         #Add textField, and add it to the box
         self.searchField = Gtk.Entry()
+<<<<<<< HEAD
         self.searchField.connect("key-release-event", enter_check)
+=======
+>>>>>>> upstream/master
         self.topBox.pack_start(self.searchField, True, True, 0)
         self.searchField.set_text("is")
 
@@ -130,7 +138,11 @@ createButtons(buttonAmount)
 win.show_all()
 
 #Start the predictor
+<<<<<<< HEAD
 Predictor.initiateDB("MarkovComplete.db")
+=======
+Predictor.initiateDB("/home/benjadahl/Documents/MarkovComplete.db")
+>>>>>>> upstream/master
 
 #Executes the main function of Gtk
 Gtk.main()
